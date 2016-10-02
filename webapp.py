@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, session, request, jsonify
 from flask_oauthlib.client import OAuth
 from flask import render_template, flash
+import terminaltweet
 
 import pprint
 import os
@@ -49,7 +50,9 @@ def inject_logged_in():
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    trends = terminaltweet.getTrends(0)
+    print trends
+    return render_template('home.html', trends=trends)
     '''
     if 'github_token' in session:
         me = github.get('user')
@@ -96,8 +99,8 @@ def authorized():
     return redirect(url_for('home'))
 
 
-@app.route('/page1')
-def renderPage1():
+@app.route('/page1/<hashtag>')
+def renderPage1(hashtag):
     if 'user_data' in session:
         user_data_pprint = pprint.pformat(session['user_data'])
     else:

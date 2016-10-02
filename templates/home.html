@@ -3,18 +3,16 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-  <h1>Home</h1>
-  <ul>
-    <li><a href="/page1">That thing we do</a></li>
-    <li><a href="/page2">The other thing</a></li>
-  </ul>
+<h1>Home</h1>
 
-<p>This is a sample application to demonstrate authenticating against github oauth,
-using Flask, on Heroku.</p>
 
-<p>The source code is available on github at <a href="https://github.com/ucsd-cse-spis-2016/spis16-webapps-oauth-example">https://github.com/ucsd-cse-spis-2016/spis16-webapps-oauth-example</a></p>
+<h5>This is for a twitter bot that generates a tweet based on other tweets in a
+hashtag. The code is available on github. Feel free to generate your own!</h5>
 
-<p>This is provided for participants in <a href="https://ucsd-cse-spis-2016.github.io">UCSD CSE SPIS 2016.</p>
+<h5>The popular trends in San Francisco are:</h5>
+{%for trend in trends%}
+    {{trend}}
+{% endfor %}
 
 
 {% endblock %}
